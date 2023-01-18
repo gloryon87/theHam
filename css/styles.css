@@ -1,0 +1,221 @@
+@font-face {
+    font-family: Gilam;
+    src: url(../fonts/Gilam/GilamRegular.otf);
+}
+@font-face {
+    font-family: Circe;
+    src: url(../fonts/Circe/Circe-Regular.ttf);
+}
+header, main {
+   display: flex;
+   background-color: rgba(23, 23, 23, 1);
+   min-width: 1200px;
+   /* width: 1920px; */
+   /* якщо треба зробити жорстку ширину як в макеті - можна розкоментувати строку 12 */
+}
+header {
+    height: 125px;
+}
+.header-logo {
+    width: 216px;
+    margin: auto 12%;
+}
+button {
+    margin: 37px 12% 37px auto;
+    border: solid 1px rgba(228, 181, 100, 1);
+    padding: 0 25px;
+    height: 50px;
+    white-space: nowrap;
+}
+main {
+    height: 3875px;
+}
+main, .clients {
+    font-family: 'Gilam', sans-serif;
+    flex-direction: column;
+}
+.button-text {
+    font-family: 'Circe', sans-serif;
+    color: rgba(228, 181, 100, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    display: inline;
+}
+h1, h2 {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+h1 {
+    margin: 82px auto 41px 12% ;
+}
+.services-title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+    margin: 0 26% 41px 12%;
+}
+.services-grid {
+    display: grid;
+    margin: 0 12% 161px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 468px);
+    grid-gap: 30px;
+    grid-template-areas: 
+    "ground ground pipes pipes canals canals"
+    "pillars pillars pillars wells wells wells";
+
+}
+.services-grid :nth-child(1) {
+    grid-area: ground;
+    background-color: rgba(99, 79, 44, 1);
+}
+.services-grid :nth-child(2) {
+    grid-area: pipes;
+    background-color: rgba(180, 163, 133, 1);
+}
+.services-grid :nth-child(3) {
+    grid-area: canals;
+    background-color: rgba(228, 181, 100, 1);
+}
+.services-grid :nth-child(4) {
+    grid-area: pillars;
+    background-color: rgba(99, 90, 74, 1);
+}
+.services-grid :nth-child(5) {
+    grid-area: wells;
+    background-color: rgba(176, 140, 77, 1);
+}
+.services-grid p {
+display: flex;
+justify-content: center;
+font-weight: 700;
+font-size: 20px;
+line-height: 28px;
+color: #FFFFFF;
+align-items: center;
+text-align: center;
+padding: 0 44px;
+}
+h2 {
+    margin: 0px auto 94px 12% ;
+}
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 12% 190px;
+    grid-gap: 30px;
+}
+.equipment-column1 {
+    display: grid;
+    grid-template-rows: 313px 560px;
+    grid-gap: 30px;
+}
+.equipment-column2 {
+    display: grid;
+    grid-template-rows: 439px 405px;
+    grid-gap: 30px;
+}
+.equipment-column3 {
+    display: grid;
+    grid-template-rows: 255px 313px 277px;
+    grid-gap: 30px;
+}
+.equipment-column1 :nth-child(1), .equipment-column3 :nth-child(2), .equipment-column3 :nth-child(3) {
+    background-color: rgba(14, 14, 14, 1);
+}
+.equipment-column1 :nth-child(2), .equipment-column3 :nth-child(1) {
+    background-color: rgba(31, 31, 31, 1);
+}
+.equipment-column2 :nth-child(1) {
+    background-color: rgba(36, 36, 36, 1);
+}
+.equipment-column2 :nth-child(2) {
+    background-color: rgba(228, 181, 100, 1);
+    color: rgba(0, 0, 0, 1);
+}
+.equipment-column3 :nth-child(3), .equipment-name {
+    font-weight: 700;
+}
+.equipment-grid div p {
+    padding: 44px 48px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    color: rgba(255, 255, 255, 1);
+}
+.clients-wrapper {
+    display: flex;
+}
+.clients h2 {
+    display: flex;
+    margin: 0 auto 72px 12%;
+    align-content: center;
+    padding-top: 10px;
+}
+.clients {
+    background-color: rgba(14, 14, 14, 1);
+    padding-top: 161px;
+}
+.clients button {
+    margin: 0 12% 61px auto;
+    padding-left: 40px;
+    padding-right: 40px;;
+}
+.clients-grid {
+    display: grid;
+    padding: 0 12%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 391px);
+    grid-template-areas:  
+    "client1 client2 client3"
+    "client4 client5 client6";
+}
+.client1 {
+    grid-area: client1;
+    background-color: rgba(99, 79, 44, 1);
+}
+.client2 {
+    grid-area: client2;
+    background-color: rgba(232, 210, 171, 0.76);
+    flex-direction: column;
+    text-align: center;
+    padding: 0 80px;
+}
+.client3 {
+    grid-area: client3;
+    background-color: rgba(228, 181, 100, 1);
+}
+.client4 {
+    grid-area: client4;
+    background-color: rgba(99, 90, 74, 1);
+}
+.client5 {
+    grid-area: client5;
+    background-color: rgba(176, 140, 77, 1);
+}
+.client6 {
+    grid-area: client6;
+    background-color: rgba(99, 79, 44, 1);
+}
+.clients-grid div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.client2-paragraph1 {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
+.client2-paragraph2 {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
+    color: #FFFFFF;
+}
