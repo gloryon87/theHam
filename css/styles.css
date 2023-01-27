@@ -18,6 +18,10 @@ header {
     white-space: nowrap;
 }
 
+header a {
+    transition: color 0.5s;
+}
+
 .logo {
     font-size: 22px;
     font-weight: 700;
@@ -42,8 +46,8 @@ header {
 
 header a:hover {
     color:rgba(1, 129, 63, 1);
-    transition: color 0.5s;
 } 
+
 main {
     margin: auto;
 }
@@ -77,11 +81,11 @@ main {
     line-height: 48px;
     padding-right: 22px;
     justify-content: space-between;
+    transition: background 0.5s;
 }
 
 .facebook-button:hover {
     background: rgba(2, 34, 99, 1);
-    transition: background 0.5s;
 }
 
 .google-button {
@@ -122,12 +126,12 @@ main {
 .signup a {
     color: rgba(60, 184, 120, 1);
     font-size: 14px;
+    transition: color 0.5s, text-decoration 0.5s;
 }
 
 .signup a:hover {
     color: rgba(1, 129, 63, 1);
     text-decoration: underline;
-    transition: color 0.5s, text-decoration 0.5s;
 }
 
 .signup-buttons {
@@ -200,12 +204,12 @@ margin-bottom: 4px;
 
 .checkbox-container a {
     color: rgba(60, 184, 120, 1);
+    transition: color 0.5s;
 }
 
 .checkbox-container a:hover {
     color: rgba(1, 129, 63, 1);
     text-decoration: underline;
-    transition: color 0.5s;
 }
 
 .submit-button {
@@ -213,11 +217,11 @@ margin-bottom: 4px;
     background: rgba(60, 184, 120, 0.8);
     color: rgba(255, 255, 255, 1);
     border-radius: 4px;
+    transition: background 0.5s;
 }
 
 .submit-button:hover {
     background: rgba(1, 129, 63, 1);
-    transition: background 0.5s;
 }
 
 
