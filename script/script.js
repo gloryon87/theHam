@@ -1,3 +1,4 @@
+"use strict";
 let admin;
 const userName="Слава";
 admin=userName;
