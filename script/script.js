@@ -1,25 +1,40 @@
-'use strict'
-let userAge = prompt('Your age?')
-while (userAge !== null && (isNaN(userAge) || +userAge === 0)) {
-  userAge = prompt('Your age?', `${userAge}`)
+'use strict';
+
+let userNumber;
+
+do {
+userNumber = prompt("Enter number", 0);
+} while (userNumber % 1 !==0);
+
+if (userNumber <5 && userNumber >-5) {
+    console.log("Sorry, no numbers");
 }
-if (+userAge >= 22) {
-} else if (+userAge >= 18) {
-  if (confirm('Are you sure you want to continue?')) {
-  } else {
-    alert('You are not allowed to visit this website.')
-    exit
-  }
-} else {
-  alert('You are not allowed to visit this website.')
-  exit
+
+for (let i = 5; i <= userNumber; i+=5) {
+    console.log(i);
 }
-let userName = prompt('Your name')
-while (userName !== null && userName === "") {
-  userName = prompt('Your name', `${userName}`)
+
+for (let i = -5; i >= userNumber; i-=5) {
+    console.log(i);
 }
-if (userName === null) {
-  alert('You are not allowed to visit this website.')
-  exit
+
+let m = prompt("Enter first number", 2);
+let n = prompt("Enter second number", 3);
+
+while (m > n) {
+    alert ("Error");
+    m = prompt("Enter first number", 2);
+    n = prompt("Enter second number", 3);
 }
-alert(`Welcome, ${userName}`)
+
+if (m < 2) {
+    m = 2;
+}
+
+primeNumbers:
+for (let i = m; i <= n; i++) {
+    for (let j = m; j < i; j++) {
+        if (i % j == 0) continue primeNumbers; 
+    }
+    console.log(i);
+}
