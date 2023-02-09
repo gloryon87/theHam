@@ -1,40 +1,49 @@
 'use strict';
 
-let userNumber;
+let firstNumber = prompt ("Enter number", 0);
+let secondNumber = prompt ("Enter number", 0);
 
-do {
-userNumber = prompt("Enter number", 0);
-} while (userNumber % 1 !==0);
-
-if (userNumber <5 && userNumber >-5) {
-    console.log("Sorry, no numbers");
-}
-
-for (let i = 5; i <= userNumber; i+=5) {
-    console.log(i);
-}
-
-for (let i = -5; i >= userNumber; i-=5) {
-    console.log(i);
-}
-
-let m = prompt("Enter first number", 2);
-let n = prompt("Enter second number", 3);
-
-while (m > n) {
-    alert ("Error");
-    m = prompt("Enter first number", 2);
-    n = prompt("Enter second number", 3);
-}
-
-if (m < 2) {
-    m = 2;
-}
-
-primeNumbers:
-for (let i = m; i <= n; i++) {
-    for (let j = m; j < i; j++) {
-        if (i % j == 0) continue primeNumbers; 
+while (isNaN(parseInt(firstNumber)) || isNaN(parseInt(secondNumber))) {
+    if (firstNumber !== null && secondNumber !== null) {
+        firstNumber = prompt ("Enter number", firstNumber);
+        secondNumber = prompt ("Enter number", secondNumber);
     }
-    console.log(i);
+    else {
+        break;
+    };
 }
+
+let operation = prompt ("Enter operation symbol (+, -, * or /)", "+");
+
+while (operation !== "+" && operation !== "-" && operation !== "*" && operation !== "/" && operation !== null) {
+    operation = prompt ("Enter operation symbol (+, -, * or /)", "+");
+}
+
+/**
+ * Calculates firstNumber +, -, * or / secondNumber
+ * @param {number} firstNumber
+ * @param {number} secondNumber
+ * @param {symbol} operation
+ * @returns {result}
+ */
+let calculate = (firstNumber, secondNumber, operation) => {
+    switch (operation) {
+        case "+":
+            return (+firstNumber + +secondNumber);
+            break;
+    
+        case "-":
+            return (+firstNumber - +secondNumber);
+            break;
+        
+        case "*":
+            return (+firstNumber * +secondNumber);
+            break;   
+        
+        case "/":
+            return (+firstNumber / +secondNumber)
+            break;
+    }
+}
+
+console.log(calculate(firstNumber, secondNumber, operation));
