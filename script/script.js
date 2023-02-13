@@ -8,40 +8,42 @@
  */
 const createNewUser = (firstName, lastName) => {
   let newUser = {
-    firstName,
-    lastName,
+    _firstName: firstName,
+    _lastName: lastName,
     getLogin () {
       return (
-        this.firstName.charAt(0).toLowerCase() + this.lastName.toLowerCase()
+        this._firstName.charAt(0).toLowerCase() + this._lastName.toLowerCase()
       )
     },
     setFirstName (firstName) {
-      Object.defineProperty(newUser, 'firstName', {
+      Object.defineProperty(newUser, '_firstName', {
         writable: true
       })
-      this.firstName = firstName
-      Object.defineProperty(newUser, 'firstName', {
+      this._firstName = firstName
+      Object.defineProperty(newUser, '_firstName', {
         writable: false
       })
     },
     setLastName (lastName) {
-      Object.defineProperty(newUser, 'lastName', {
+      Object.defineProperty(newUser, '_lastName', {
         writable: true
       })
-      this.lastName = lastName
-      Object.defineProperty(newUser, 'lastName', {
+      this._lastName = lastName
+      Object.defineProperty(newUser, '_lastName', {
         writable: false
       })
     }
   }
 
-  Object.defineProperty(newUser, 'firstName', {
+  Object.defineProperty(newUser, '_firstName', {
     writable: false
   })
 
-  Object.defineProperty(newUser, 'lastName', {
+  Object.defineProperty(newUser, '_lastName', {
     writable: false
   })
+
+  // newUser.setFirstName("Petya")
 
   console.log(newUser, newUser.getLogin())
 }
