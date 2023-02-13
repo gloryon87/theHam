@@ -1,49 +1,49 @@
-'use strict';
-
-let firstNumber = prompt ("Enter number", 0);
-let secondNumber = prompt ("Enter number", 0);
-
-while (isNaN(parseInt(firstNumber)) || isNaN(parseInt(secondNumber))) {
-    if (firstNumber !== null && secondNumber !== null) {
-        firstNumber = prompt ("Enter number", firstNumber);
-        secondNumber = prompt ("Enter number", secondNumber);
-    }
-    else {
-        break;
-    };
-}
-
-let operation = prompt ("Enter operation symbol (+, -, * or /)", "+");
-
-while (operation !== "+" && operation !== "-" && operation !== "*" && operation !== "/" && operation !== null) {
-    operation = prompt ("Enter operation symbol (+, -, * or /)", "+");
-}
+'use strict'
 
 /**
- * Calculates firstNumber +, -, * or / secondNumber
- * @param {number} firstNumber
- * @param {number} secondNumber
- * @param {symbol} operation
- * @returns {result}
+ * Creates new user
+ * @param {string} firstName
+ * @param {string} lastName
+ * @returns {object}
  */
-let calculate = (firstNumber, secondNumber, operation) => {
-    switch (operation) {
-        case "+":
-            return (+firstNumber + +secondNumber);
-            break;
-    
-        case "-":
-            return (+firstNumber - +secondNumber);
-            break;
-        
-        case "*":
-            return (+firstNumber * +secondNumber);
-            break;   
-        
-        case "/":
-            return (+firstNumber / +secondNumber)
-            break;
+const createNewUser = (firstName, lastName) => {
+  let newUser = {
+    firstName,
+    lastName,
+    getLogin () {
+      return (
+        this.firstName.charAt(0).toLowerCase() + this.lastName.toLowerCase()
+      )
+    },
+    setFirstName (firstName) {
+      Object.defineProperty(newUser, 'firstName', {
+        writable: true
+      })
+      this.firstName = firstName
+      Object.defineProperty(newUser, 'firstName', {
+        writable: false
+      })
+    },
+    setLastName (lastName) {
+      Object.defineProperty(newUser, 'lastName', {
+        writable: true
+      })
+      this.lastName = lastName
+      Object.defineProperty(newUser, 'lastName', {
+        writable: false
+      })
     }
+  }
+
+  Object.defineProperty(newUser, 'firstName', {
+    writable: false
+  })
+
+  Object.defineProperty(newUser, 'lastName', {
+    writable: false
+  })
+
+  console.log(newUser, newUser.getLogin())
 }
 
-console.log(calculate(firstNumber, secondNumber, operation));
+createNewUser('Vasya', 'Pupkin')
