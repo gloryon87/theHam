@@ -1,51 +1,18 @@
-'use strict'
+"use strict"
 
-/**
- * Creates new user
- * @param {string} firstName
- * @param {string} lastName
- * @returns {object}
- */
-const createNewUser = (firstName, lastName) => {
-  let newUser = {
-    _firstName: firstName,
-    _lastName: lastName,
-    getLogin () {
-      return (
-        this._firstName.charAt(0).toLowerCase() + this._lastName.toLowerCase()
-      )
-    },
-    setFirstName (firstName) {
-      Object.defineProperty(newUser, '_firstName', {
-        writable: true
-      })
-      this._firstName = firstName
-      Object.defineProperty(newUser, '_firstName', {
-        writable: false
-      })
-    },
-    setLastName (lastName) {
-      Object.defineProperty(newUser, '_lastName', {
-        writable: true
-      })
-      this._lastName = lastName
-      Object.defineProperty(newUser, '_lastName', {
-        writable: false
-      })
+let userNumber;
+
+do {userNumber = prompt("Enter Number", 0)}
+while (userNumber !== null && isNaN(parseInt(userNumber)));
+
+const calculateFactorial = userNumber => {
+    if (userNumber < 0)
+    return -1;
+    else if (userNumber == 0)
+    return 1;
+    else {
+        return (userNumber * calculateFactorial(userNumber - 1));
     }
-  }
-
-  Object.defineProperty(newUser, '_firstName', {
-    writable: false
-  })
-
-  Object.defineProperty(newUser, '_lastName', {
-    writable: false
-  })
-
-  // newUser.setFirstName("Petya")
-
-  console.log(newUser, newUser.getLogin())
 }
 
-createNewUser('Vasya', 'Pupkin')
+alert(calculateFactorial(userNumber));
