@@ -70,33 +70,33 @@ calculateFibonacci(0,1)
 
 // HW18
 
-const object = {
-    name: 'dwsdwf',
-    eded: {
-        number: 5,
-        dfdef: {
-            string: 'bla',
-        },
-    }
-}
+// const object = {
+//     name: 'dwsdwf',
+//     eded: {
+//         number: 5,
+//         dfdef: {
+//             string: 'bla',
+//         },
+//     }
+// }
 
-console.log(object);
-let newObject = {};
+// console.log(object);
+// let newObject = {};
 
-function cloneObject (object) {
-    for (const key in object)
-     {
-        if (typeof object[key] !== 'object') 
-        {newObject[key] = object[key];}
-        else {
-           newObject[key] = cloneObject (object[key])
-        }       
-    }
+// function cloneObject (object) {
+//     for (const key in object)
+//      {
+//         if (typeof object[key] !== 'object') 
+//         {newObject[key] = object[key];}
+//         else {
+//            newObject[key] = cloneObject (object[key])
+//         }       
+//     }
 
-}
+// }
 
-cloneObject(object);
-console.log(newObject);
+// cloneObject(object);
+// console.log(newObject);
 
 
 
