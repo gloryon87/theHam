@@ -1,47 +1,67 @@
 'use strict'
 
-// HW19
+// HW20
 
-const teamMembers = [2, 5, 4]
-const backlog = [50, 40, 30]
-let deadline = new Date('March 13, 2023 19:00:00')
+const array = [
+  { name: 'asdSad', color: 'Blue' },
+  { name: 'gghfgh', color: 'red' },
+  { name: 'hgfhfgh', color: 'white', contentType: [{ name: 'wewew', color: 'red' }] },
+  [{ name: 'wewew', color: 'bLue' }]
+]
 
 /**
- * Function checkDeadline checks if team can deliver project before deadline
- * @param {array} teamMembers
- * @param {array} backlog
- * @param {Date} deadline
- * @returns {boolean}
+ * Filters collection from array
+ * @param {array} array
+ * @param {string} keyWords
+ * @param {boolean} all
+ * @param {string} ...fields
+ * @returns {array}
  */
-function checkDeadline (teamMembers, backlog, deadline) {
-  function sum (a, b) {
-    return a + b
-  }
-
-  let daysBeforeDeadline = 0
-  for (let i = new Date(); i <= deadline; i.setDate(i.getDate() + 1)) {
-    if (new Date(i).getDay() !== 0 && new Date(i).getDay() !== 6) {
-      daysBeforeDeadline += 1
+function filterCollection (array, keyWords, all, ...fields) {
+  function filter(element) {
+    function checkKeywords(elem) {
+      for (const field of fields) {
+        const fieldNames = field.split('.');
+        let value = element;
+    
+        for (const fieldName of fieldNames) {
+          if (value === undefined) {
+            return false;
+          }
+    
+          value = value[fieldName];
+    
+          if (Array.isArray(value)) {
+            for (const item of value) {
+              if (item.name.toLowerCase().includes(elem.toLowerCase())) {
+                return true;
+              }
+            }
+            return false;
+          } else if (typeof value === 'object' && value !== null) {
+            value = Object.values(value);
+          }
+        }
+    
+        if (value.toLowerCase().includes(elem.toLowerCase())) {
+          return true;
+        }
+      }
+    
+      return false;
     }
-  }
-
-  const daysOfWork = backlog.reduce(sum, 0) / teamMembers.reduce(sum, 0)
-
-  if (daysBeforeDeadline >= daysOfWork) {
-    alert(
-      `Усі завдання будуть успішно виконані за ${Math.floor(
-        daysBeforeDeadline - daysOfWork
-      )} днів до настання дедлайну!`
-    )
-    return true;
-  } else {
-    alert(
-      `Команді розробників доведеться витратити додатково ${Math.ceil(
-        (daysOfWork - daysBeforeDeadline) * 8
-      )} годин після дедлайну, щоб виконати всі завдання в беклозі`
-    )
-    return false;
-  }
+    if (all === true) {
+      if (keyWords.split(' ').every(checkKeywords)) {
+        return element
+      }
+      
+    }
+    else {
+      if (keyWords.split(' ').some(checkKeywords)) {
+        return element
+      }
+  }}
+  return array.flat().filter((filter));
 }
 
-// checkDeadline(teamMembers, backlog, deadline)
+console.log(filterCollection (array, 'Asdsad blue', true, 'color', 'name', 'contentType.color'));
