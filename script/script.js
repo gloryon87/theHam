@@ -1,47 +1,26 @@
 'use strict'
 
-// HW9
+// HW10
 
-const array = [
-  'Kharkiv',
-  'Kyiv',
-  ['Boryspil', 'Irpin'],
-  'Odesa',
-  'Lviv',
-  'Dnipro'
-]
+const tabs = document.querySelectorAll(".tabs li")
+const tabsContent = document.querySelectorAll(".tabs-content li")
+const titles = document.querySelectorAll(".tabs-title")
 
-/**
- * Inserts list from array on page
- * @param {array} array
- * @param {Element} parent=document.body
- * @returns {undefined}
- */
-function insertList (array, parent = document.body) {
-  const html = `<ul>${array.map(createList).join('')}</ul>`
-  parent.insertAdjacentHTML('beforeend', html)
-  function createList (elem) {
-    if (Array.isArray(elem)) {
-      return `<ul>${elem.map(createList).join('')}</ul>`
-    } else {
-      return `<li>${elem}</li>`
-    }
-  }
-  let timer = 3
-  parent.insertAdjacentHTML(
-    'beforeend',
-    `<p id="timer">${timer} seconds left</p>`
-  )
-  setTimeout("document.body.innerHTML = ''", 3000)
-  setInterval(runTimer, 1000)
-  function runTimer () {
-    if (timer === 1) {
-      return
-    }
-    timer--
-    document.getElementById('timer').textContent = `${timer} seconds left`
-    
-  }
+for (const tab of tabs) {
+    tab.addEventListener('click',  showContent)
 }
 
-insertList(array)
+/**
+ * shows respective tab-content for tabs-title clicked on
+ * in order by tabs-title data-order.
+ */
+function showContent () {
+    for (const title of titles) {
+        title.classList.remove("active")
+    }
+    for (const tab of tabsContent) {
+        tab.classList.add("hidden")
+    }
+    this.classList.add("active")
+    tabsContent[this.dataset.order].classList.remove("hidden")
+}
