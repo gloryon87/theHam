@@ -4,7 +4,9 @@
 
 const inputWrappers = document.querySelectorAll('.input-wrapper')
 const form = document.querySelector('.password-form')
-const inputs = document.querySelectorAll('.input-wrapper input')
+const firstInput = document.getElementById('firstInput')
+const secondInput = document.getElementById('secondInput')
+
 
 inputWrappers.forEach(wrapper => {
   wrapper.addEventListener('click', function (event) {
@@ -24,7 +26,7 @@ inputWrappers.forEach(wrapper => {
 form.addEventListener('submit', function (event) {
   event.preventDefault()
   let passw = /^(?=.*[a-zA-Z0-9!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{6,}$/
-  if (inputs[0].value === inputs[1].value && inputs[0].value.match(passw)) {
+  if (firstInput.value === secondInput.value && firstInput.value.match(passw)) {
     alert('You are welcome')
     form.reset()
   } else {
