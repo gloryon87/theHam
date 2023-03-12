@@ -1,32 +1,27 @@
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.centered-content {
-    height: 50vh;
+.password-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.tabs {
-    display: flex;
+.input-wrapper {
+    position: relative;
+    width: 200px;
+
 }
 
-.tabs-title {
-    padding: 20px;
-    background-color: #23201D;
-    color: #937341;
-    cursor: pointer;
+.input-wrapper input {
+    min-width: 120px;
+    padding: 10px;
+    margin-bottom: 24px;
 }
 
-.tabs-title.active {
-    background-color:#937341 ;
-    color: #23201D;
+.input-wrapper i {
+    position: absolute;
+    right: 25px;
+    top: 30px;
+    color: grey;
 }
 
-.hidden {
-    display: none;
+.btn {
+    width: 150px;
 }

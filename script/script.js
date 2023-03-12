@@ -1,26 +1,36 @@
 'use strict'
 
-// HW10
+// HW11
 
-const tabs = document.querySelectorAll(".tabs li")
-const tabsContent = document.querySelectorAll(".tabs-content li")
-const titles = document.querySelectorAll(".tabs-title")
+const inputWrappers = document.querySelectorAll('.input-wrapper')
+const form = document.querySelector('.password-form')
+const inputs = document.querySelectorAll('.input-wrapper input')
 
-for (const tab of tabs) {
-    tab.addEventListener('click',  showContent)
-}
-
-/**
- * shows respective tab-content for tabs-title clicked on
- * in order by tabs-title data-order.
- */
-function showContent () {
-    for (const title of titles) {
-        title.classList.remove("active")
+inputWrappers.forEach(wrapper => {
+  wrapper.addEventListener('click', function (event) {
+    if (event.target.dataset.name === 'i') {
+      event.target.classList.toggle('fa-eye-slash')
+      for (const child of wrapper.children) {
+        if (child.type === 'password') {
+          child.type = 'text'
+        } else if (child.type === 'text') {
+          child.type = 'password'
+        }
+      }
     }
-    for (const tab of tabsContent) {
-        tab.classList.add("hidden")
-    }
-    this.classList.add("active")
-    tabsContent[this.dataset.order].classList.remove("hidden")
-}
+  })
+})
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault()
+  let passw = /^(?=.*[a-zA-Z0-9!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{6,}$/
+  if (inputs[0].value === inputs[1].value && inputs[0].value.match(passw)) {
+    alert('You are welcome')
+    form.reset()
+  } else {
+    alert(
+      'Потрібно ввести однакові значення, пароль має складатись щонайменше з 6 символів'
+    )
+    form.reset()
+  }
+})
