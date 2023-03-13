@@ -1,27 +1,23 @@
-.password-form {
+.btn-wrapper{
+    height: 60vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
-
-.input-wrapper {
-    position: relative;
-    width: 200px;
-
-}
-
-.input-wrapper input {
+.btn{
+    border: none;
+    border-radius: 20px;
     min-width: 120px;
-    padding: 10px;
-    margin-bottom: 24px;
+    padding: 7px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #000000;
+    cursor: pointer;
 }
-
-.input-wrapper i {
-    position: absolute;
-    right: 25px;
-    top: 30px;
-    color: grey;
+.btn:active,
+.btn:focus{
+    outline: none;
 }
-
-.btn {
-    width: 150px;
+.btn-active{
+    background-color: darkblue;
 }
