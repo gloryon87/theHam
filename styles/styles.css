@@ -1,23 +1,32 @@
-.btn-wrapper{
-    height: 60vh;
+.image-to-show {
+    width: 400px;
+    height: 400px;
+    display: block;
+    opacity: 0;
+  }
+
+.images-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+.image-hidden {
+    display: none;
 }
-.btn{
-    border: none;
-    border-radius: 20px;
-    min-width: 120px;
-    padding: 7px;
-    color: #fff;
-    font-size: 14px;
-    background-color: #000000;
+
+.button {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
     cursor: pointer;
-}
-.btn:active,
-.btn:focus{
-    outline: none;
-}
-.btn-active{
-    background-color: darkblue;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px;
+    margin: 10px;
 }
