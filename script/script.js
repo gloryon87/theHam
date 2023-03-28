@@ -157,6 +157,7 @@ const msnry = new Masonry(elem, {
 })
 
 imagesLoaded( elem, msnry.layout() )
+window.onload=function(){msnry.layout()}
 
 // Gallery LOAD MORE button
 
