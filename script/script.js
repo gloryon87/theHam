@@ -156,7 +156,7 @@ const msnry = new Masonry(elem, {
   gutter: 20
 })
 
-msnry.layout()
+imagesLoaded( elem, msnry.layout() )
 
 // Gallery LOAD MORE button
 
