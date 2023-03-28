@@ -1,32 +1,591 @@
-.image-to-show {
-    width: 400px;
-    height: 400px;
-    display: block;
-    opacity: 1;
-  }
 
-.images-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-.image-hidden {
-    display: none;
+body {
+  font-family: 'Montserrat';
 }
 
-.button {
-    background-color: #fff;
-    border: 1px solid #d5d9d9;
-    border-radius: 8px;
-    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-    box-sizing: border-box;
-    color: #0f1111;
-    cursor: pointer;
-    display: inline-block;
-    font-family: "Amazon Ember",sans-serif;
-    font-size: 13px;
-    line-height: 29px;
-    padding: 0 10px;
-    margin: 10px;
+.background-wrapper {
+  background-image: url("../img/Sections-background/section-1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  margin-bottom: 8px;
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.25));
+}
+
+header {
+  height: 120px;
+  min-width: 1200;
+  background: rgba(94, 93, 88, 0.6);
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header-navigation-menu {
+  display: flex;
+}
+
+.header-navigation-menu li {
+  padding: 0 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.header-navigation-menu li:hover {
+  color: rgba(24, 207, 171, 1)
+}
+
+main, .services, .purchase-now, .our-work, .news, .people-say, .gallery {
+  text-align: center;
+}
+
+main h1 {
+  margin-top: 251px;
+  color: white;
+  font-weight: 700;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+main h1 span {
+  color: rgba(24, 207, 171, 1)
+}
+
+.main-creative {
+  margin-top: 22px;
+  font-weight: 700;
+  font-size: 78px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.main-buy {
+  margin-top: 22px;
+  font-size: 34px;
+  color: #D4D4D4;
+}
+
+button {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 32px;
+  width: 168px;
+  height: 68px;
+  color: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+main button {
+  margin-top: 122px;
+
+  margin-bottom: 243px;
+}
+
+.explore-button {
+  background-color: rgba(24, 207, 171, 1);
+  margin-right: 26px;
+}
+
+.purchase-button {
+  background-color: rgba(0, 203, 246, 1);
+}
+
+.main-advantages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.main-advantages div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 360px;
+  padding-bottom: 103px;
+  /* margin-bottom: 92px; */
+}
+
+.main-advantages div:nth-child(odd) {
+  background-color: rgba(28, 42, 51, 1);
+  color: rgba(24, 207, 171, 1);
+  padding-top: 87px;
+}
+
+.main-advantages div:nth-child(even) {
+  background-color: rgba(24, 207, 171, 1);
+  color: white;
+  padding-top: 98px;
+}
+
+.services {
+  width: 1164px;
+  margin: 0 auto 28px;
+  padding-top: 92px
+}
+
+.services h2, .our-work h2, .news h2, .people-say h2, .gallery h2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 36px;
+  line-height: 111%;
+  margin-bottom: 70px;
+  color: rgba(78, 78, 78, 1);
+}
+
+.services h2::after, .our-work h2::after, .news h2::after, .people-say h2::after, .gallery h2::after {
+  align-self: center;
+  display: flex;
+  content: ' ';
+  width: 91px;
+  height: 8px;
+  margin-top: 26px;
+  background-image: url(../img/Style_line.png);
+}
+
+.services ul {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-bottom: 28px;
+}
+
+.services ul li {
+  display: flex;
+  position: relative;
+  line-height: 244%;
+  padding: 16px 10px;
+  background-color: #F8FCFE;
+  border: 1px solid #F2F2F2;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.services ul li:hover {
+  border: solid 1.5px rgba(24, 207, 171, 1);
+}
+
+.services .active-service {
+  background-color: rgba(24, 207, 171, 1);
+  color: white;
+}
+
+.services .active-service::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: rgba(24, 207, 171, 1) transparent transparent transparent;
+}
+
+.services-content div {
+  display: flex;
+  margin-bottom: 90px;
+  align-items: center;
+}
+
+.services-content .hidden  {
+  display: none;
+}
+
+.services-content div p {
+  margin-left: 15px;
+  color: rgba(119, 119, 119, 1);
+  font-size: 14px;
+  line-height: 146%;
+}
+
+.purchase-now {
+  padding: 125px 0px;
+  background-image: url(../img/Sections-background/section-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: darken;
+}
+
+.purchase-now h2 {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  color: rgba(24, 207, 171, 1);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.purchase-now p {
+  line-height: 250%;
+  color: rgba(216, 216, 216, 1);
+  margin-bottom: 62px;
+}
+
+.purchase-now button, .our-work button, .gallery button {
+  background-color: rgba(24, 207, 171, 1);
+  position: relative;
+}
+
+.our-work {
+  background-color: #E9EDEF;
+  padding-bottom: 100px;
+  position: relative;
+  margin-bottom: 82px;
+}
+
+.our-work h2 {
+  padding-top: 95px;
+}
+
+.our-work ul {
+  display: flex;
+  margin: 0 auto 70px;
+  justify-content: center;
+  width: fit-content;
+}
+
+.our-work ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  min-width: 77px;
+  padding: 14px 15px;
+  font-size: 14px;
+  line-height: 300%;
+  color: rgba(113, 113, 113, 1);
+  border: 1px solid rgba(218, 218, 218, 1)
+}
+
+.our-work ul li:hover {
+  border: solid 1px rgba(24, 207, 171, 1);
+}
+
+.our-work-images {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 284px);
+  overflow: hidden;
+  grid-gap: 1px;
+  margin-bottom: 70px;
+}
+
+.our-work button span {
+  padding-left: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.our-work .our-work-active {
+  border: solid 2px rgba(24, 207, 171, 1) !important;
+  color: rgba(24, 207, 171, 1);
+}
+
+/* spinner */
+
+.lds-default {
+  display: none;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 0;
+  top: 0;
+  transform: translate(50%, -4px);
+}
+.lds-default div {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: lds-default 1.2s linear infinite;
+}
+.lds-default div:nth-child(1) {
+  animation-delay: 0s;
+  top: 37px;
+  left: 66px;
+}
+.lds-default div:nth-child(2) {
+  animation-delay: -0.1s;
+  top: 22px;
+  left: 62px;
+}
+.lds-default div:nth-child(3) {
+  animation-delay: -0.2s;
+  top: 11px;
+  left: 52px;
+}
+.lds-default div:nth-child(4) {
+  animation-delay: -0.3s;
+  top: 7px;
+  left: 37px;
+}
+.lds-default div:nth-child(5) {
+  animation-delay: -0.4s;
+  top: 11px;
+  left: 22px;
+}
+.lds-default div:nth-child(6) {
+  animation-delay: -0.5s;
+  top: 22px;
+  left: 11px;
+}
+.lds-default div:nth-child(7) {
+  animation-delay: -0.6s;
+  top: 37px;
+  left: 7px;
+}
+.lds-default div:nth-child(8) {
+  animation-delay: -0.7s;
+  top: 52px;
+  left: 11px;
+}
+.lds-default div:nth-child(9) {
+  animation-delay: -0.8s;
+  top: 62px;
+  left: 22px;
+}
+.lds-default div:nth-child(10) {
+  animation-delay: -0.9s;
+  top: 66px;
+  left: 37px;
+}
+.lds-default div:nth-child(11) {
+  animation-delay: -1s;
+  top: 62px;
+  left: 52px;
+}
+.lds-default div:nth-child(12) {
+  animation-delay: -1.1s;
+  top: 52px;
+  left: 62px;
+}
+@keyframes lds-default {
+  0%, 20%, 80%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+.news-posts {
+  display: grid;
+  grid-template-columns: repeat(4, 263px);
+  grid-gap: 45px 2%;
+  margin-bottom: 125px;
+  justify-content: center;
+}
+
+.news-posts div {
+  position: relative;
+  background-size:contain;
+  background-repeat: no-repeat;
+  width: 263px;
+  height: 208px;
+}
+
+.news-posts div::after {
+  position: absolute;
+  content: "12 Feb";
+  width: 70px;
+  height: 68px;
+  color: white;
+  background-color: #203E38;
+  top: 0px;
+  right: 0px;
+  line-height: 25px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+
+.post p {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 216%;
+  color: #717171;
+  margin-left: 15px;
+}
+
+.post span {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 278%;
+  color: #777777;
+  margin-left: 20px;
+}
+
+.post:hover p {
+  color: rgba(24, 207, 171, 1);
+}
+
+.post:hover div::after {
+  background-color: rgba(24, 207, 171, 1);
+}
+
+.post1 div {
+  background-image: url(../img/news/Layer47.png);
+}
+
+.post2 div {
+  background-image: url(../img/news/Layer50.png);
+}
+
+.post3 div {
+  background-image: url(../img/news/Layer51.png);
+}
+
+.post4 div {
+  background-image: url(../img/news/Layer52.png);
+}
+
+.post5 div {
+  background-image: url(../img/news/Layer53.png);
+}
+.post6 div {
+  background-image: url(../img/news/Layer54.png);
+}
+
+.post7 div {
+  background-image: url(../img/news/Layer55.png);
+}
+
+.post8 div {
+  background-image: url(../img/news/Layer56.png);
+}
+
+.people-say {
+  background-image: url(../img/Sections-background/section-3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: darken;
+  padding: 100px 0;
+  margin-bottom: 108px;
+}
+
+.people-say h2 {
+  color: white;
+}
+
+.people-say span {
+  color:  #18CFAB;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.people-say svg {
+  margin-bottom: 37px;
+}
+
+.quote p {
+  color: rgba(187, 187, 187, 1);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 188%;
+  width: 1160px;
+  text-align: center;
+  margin: 0 auto 5px;
+}
+
+.quote p:first-child {
+  margin: 0 auto 37px;
+  font-size: 16px;
+}
+
+.quote img {
+  margin: 50px 0 70px;
+  border: solid 11px rgba(31, 218, 181, 0.2);
+  border-radius: 50%;
+  width: 143px;
+  height: 143px;
+}
+
+.quotes-carusel {
+  display: flex;
+  justify-content: center;
+  color: #BBBBBB;
+  user-select: none;
+}
+
+.people-say li {
+  position: relative;
+  margin: 0 17px;
+  display: flex;
+  cursor: pointer;
+  min-width: 31px;
+  transition: opacity 1s;
+}
+
+.quotes-carusel svg {
+  position: absolute;
+  border: solid 1px rgba(187, 187, 187, 1);
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.quotes-carusel svg:hover {
+  background-color: rgba(24, 207, 171, 1);
+  color: white;
+}
+
+.quotes-carusel img {
+  width: 60px;
+  height: 60px;
+  border: solid 5px rgba(31, 218, 181, 0.2);
+  border-radius: 50%;
+}
+
+.quotes-carusel img:hover {
+  border: solid 5px rgba(24, 207, 171, 1);
+}
+
+.gallery {
+  position: relative;
+}
+
+.grid {
+  margin: 0 auto 52px;
+  width: 1174px;
+}
+
+.masonry {
+  width: 368px;
+}
+
+footer {
+  background: rgba(34, 53, 63, 1);
+  padding: 48px 0;
+  text-align: center;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 186%;
+  color: #AEAEAE;
+  margin-top: 67px;
 }

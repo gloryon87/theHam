@@ -1,94 +1,187 @@
 'use strict'
 
-// HW13
+// Our services
 
-const images = document.querySelectorAll('.image-to-show')
-let imageNumber = 0
-let timeoutId
-let intervalId
-const timer = document.createElement('div')
-let secondsId
-let msId
+const services = document.querySelector('.services ul')
+const servicesContents = document.querySelectorAll('.services-content div')
 
-function changeImage () {
-  setTimer()
-  timeoutId = setTimeout(() => {
-    fadeOut(images[imageNumber])
-    images[imageNumber].classList.add('image-hidden')
-    imageNumber += 1
-    if (imageNumber >= images.length) {
-      imageNumber = 0
-    }
-    images[imageNumber].classList.remove('image-hidden')
-    images[imageNumber].style.opacity = 0
-    fadeIn(images[imageNumber])
-  }, 2750)
-}
+services.addEventListener('mouseup', activateService)
+services.addEventListener('keypress', activateService)
 
-function fadeOut (image) {
-  setTimeout(() => {
-    image.style.opacity = 0
-    image.style.transition = 'opacity 250ms'
+function activateService (event) {
+  document.querySelector('.active-service').classList.remove('active-service')
+  event.target.classList.add('active-service')
+  servicesContents.forEach(element => {
+    element.classList.add('hidden')
   })
+  servicesContents[event.target.dataset.index].classList.remove('hidden')
 }
 
-function fadeIn (image) {
-  setTimeout(() => {
-    image.style.opacity = 1
-    image.style.transition = 'opacity 250ms'
-  }, 250)
+// Our Work
+
+const ourWork = document.querySelector('.our-work ul')
+const ourImages = document.querySelectorAll('.our-work-images img')
+let imagesVisible = 12
+let imagesToShow = ourImages
+let imageCategory = ''
+
+for (let i = 0; i < ourImages.length; i++) {
+  if (i >= imagesVisible) {
+    ourImages[i].style.display = 'none'
+  }
 }
 
-function clear () {
-  clearTimeout(intervalId)
-  clearTimeout(timeoutId)
-  clearTimeout(secondsId)
-  clearTimeout(msId)
-  timer.remove()
-}
+ourWork.addEventListener('mouseup', activateWork)
+ourWork.addEventListener('keypress', activateWork)
 
-function addButtons () {
-  const stopShowing = document.createElement('button')
-  stopShowing.innerText = 'Припинити'
-  document.body.append(stopShowing)
-  stopShowing.className = 'button'
-  stopShowing.addEventListener('click', clear)
-  const resumeShowing = document.createElement('button')
-  resumeShowing.innerText = 'Відновити показ'
-  document.body.append(resumeShowing)
-  resumeShowing.className = 'button'
-  resumeShowing.addEventListener('click', showImages)
-}
-
-addButtons()
+const loadMore = document.getElementById('loadMore')
 
 function showImages () {
-  clear()
-  changeImage()
-  intervalId = setInterval(() => {
-    changeImage()
-  }, 3000)
+  imagesVisible = 12
+  ourImages.forEach(image => {
+    image.style.display = 'none'
+  })
+  for (let i = 0; i < imagesToShow.length; i++) {
+    if (i < imagesVisible) {
+      imagesToShow[i].style.display = 'block'
+    }
+  }
+  loadMore.style.display = 'inline-block'
 }
 
-function setTimer () {
-  clearTimeout(secondsId)
-  clearTimeout(msId)
-  timer.remove()
-  let seconds = 2
-  let ms = 1000
-  document.body.append(timer)
-  timer.innerText = `${seconds} seconds and ${ms} miliseconds left`
+function activateWork (event) {
+  document.querySelector('.our-work-active').classList.remove('our-work-active')
+  event.target.classList.add('our-work-active')
+  imageCategory = event.target.dataset.category
+  imagesToShow = Array.from(ourImages).filter(image => {
+    return image.dataset.category.includes(imageCategory)
+  })
+  showImages()
+}
 
-  secondsId = setInterval(() => {
-      seconds -= 1
-  }, 1000)
+// Our work LOAD MORE button
 
-  msId = setInterval(() => {
-    if (ms > 0) {
-      ms -= 100
-    } else {
-      ms = 1000
+loadMore.addEventListener('click', () => {
+  showLoader(), setTimeout(showMoreImages, 2000)
+})
+
+function showLoader () {
+  document.querySelector('.our-work .lds-default').style.display =
+    'inline-block'
+  setTimeout(hideLoader, 2000)
+}
+
+function hideLoader () {
+  document.querySelector('.our-work .lds-default').style.display = 'none'
+}
+
+function showMoreImages () {
+  if (imagesVisible < 36) {
+    imagesVisible += 12
+  }
+  for (let i = 0; i < ourImages.length; i++) {
+    if (i < imagesVisible) {
+      imagesToShow[i].style.display = 'block'
     }
-    timer.innerText = `${seconds} seconds and ${ms} miliseconds left`
-  }, 100)
+  }
+  if (imagesVisible >= 36) {
+    loadMore.style.display = 'none'
+  }
+}
+
+// What People Say About theHam
+
+const quotes = document.querySelectorAll('.quote')
+const quoters = document.querySelector('.quotes-carusel')
+
+quoters.addEventListener('mouseup', activateQuoter)
+quoters.addEventListener('keypress', activateQuoter)
+
+function activateQuoter (event) {
+  if (event.target === quoters) return
+  let activeQuote = document.querySelector('.people-say .active')
+  quotes.forEach(quote => {
+    quote.style.opacity = 0
+    quote.style.transition = 'opacity 500ms'
+  })
+  setTimeout(changeQuote, 500)
+  if (event.target.closest('li').dataset.select === 'left') {
+    if (quoteNumber > 1) {
+      quoteNumber -= 1
+    } else {
+      quoteNumber = quotes.length
+    }
+  } else if (event.target.closest('li').dataset.select === 'right') {
+    if (quoteNumber < quotes.length) {
+      quoteNumber += 1
+    } else {
+      quoteNumber = 1
+    }
+  } else {
+    quoteNumber = +event.target.closest('li').dataset.select
+  }
+
+  quotersImg.forEach(img => {
+    img.style.transform = ''
+  })
+  moveQuotersImg()
+
+  function changeQuote () {
+    activeQuote.classList.add('hidden')
+    activeQuote.classList.remove('active')
+    quotes[quoteNumber - 1].classList.remove('hidden')
+    quotes[quoteNumber - 1].classList.add('active')
+    activeQuote = document.querySelector('.people-say .active')
+    setTimeout(() => {
+      activeQuote.style.opacity = 1
+    }, 20)
+  }
+}
+
+const quotersImg = document.querySelectorAll('.quotes-carusel img')
+let quoteNumber = 3
+
+function moveQuotersImg () {
+  quotersImg[quoteNumber - 1].style.transform = 'translateY(-10px)'
+}
+
+moveQuotersImg()
+
+// Masonry gallery
+
+const elem = document.querySelector('.grid')
+const msnry = new Masonry(elem, {
+  itemSelector: '.grid-item',
+  columnWidth: 378,
+  gutter: 20
+})
+
+// Gallery LOAD MORE button
+
+const loadMoreImg = document.querySelector('.gallery button')
+const additionalImages = document.querySelectorAll('.grid .hidden')
+
+loadMoreImg.addEventListener('click', () => {
+  showGalleryLoader(), setTimeout(showMoreMasonry, 2000)
+})
+
+loadMoreImg.addEventListener('keypress', () => {
+  showGalleryLoader(), setTimeout(showMoreMasonry, 2000)
+})
+
+function showMoreMasonry () {
+  additionalImages.forEach(image => {
+    image.classList.remove('hidden')
+  })
+  msnry.layout()
+  loadMoreImg.style.display = 'none'
+}
+
+function showGalleryLoader () {
+  document.querySelector('.gallery .lds-default').style.display = 'inline-block'
+  setTimeout(hideGalleryLoader, 2000)
+}
+
+function hideGalleryLoader () {
+  document.querySelector('.gallery .lds-default').style.display = 'none'
 }
