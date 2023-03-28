@@ -289,7 +289,7 @@ main button {
   margin-bottom: 70px;
 }
 
-.our-work button span {
+.our-work button span, .gallery button span {
   padding-left: 15px;
 }
 
